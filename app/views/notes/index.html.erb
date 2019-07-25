@@ -1,1 +1,14 @@
-<h1>All notes</h1>
+<div>
+  <h3>All posts</h3>
+  <p><%= link_to 'Add new note', new_note_path %></p>
+  <ul>
+    <% @notes.each do |n| %>
+      <li>
+        <p><%= n.created_at %> <%= n.city %>
+        <%if n.weather != 'no data'%><%= n.weather %> <sup>o</sup>C<%end%></p>
+        <p><%= link_to 'Show', note_path(n) %> <%= link_to 'Edit', edit_note_path(n) %>  <%= link_to 'Delete', note_path(n), method: :delete %> </p>
+      </li>
+    <%end%>
+  </ul>
+</div>
+<%= link_to 'Log out', destroy_user_session_path, method: :delete%>

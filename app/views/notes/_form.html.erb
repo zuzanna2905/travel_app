@@ -1,0 +1,11 @@
+<%= form_for @note do |f| %>
+  <div>
+    <%= f.label :city %>
+    <%= f.text_field :city, required: true %>
+  </div>
+  <div>
+    <%= f.label :note %>
+    <%= f.text_area :note, required: true %>
+  </div>
+  <%= f.submit 'Save' %>
+<% end %>
