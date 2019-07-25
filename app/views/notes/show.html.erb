@@ -1,0 +1,8 @@
+<div>
+  <h3><%= @note.city %>
+  <small><%= @note.created_at.strftime('%F') %></small></h3>
+  <p><%if @note.weather != 'no data'%> Temp: <%= @note.weather %> <sup>o</sup>C<%end%></p>
+  <p><%= @note.note %></p>
+  <p><%= link_to 'Edit', edit_note_path(@note) %>  <%= link_to 'Delete', note_path(@note), method: :delete %> </p>
+  <p><%= link_to 'Back to all notes', notes_path%></p>
+</div>
