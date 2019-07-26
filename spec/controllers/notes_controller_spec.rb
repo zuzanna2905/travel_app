@@ -5,7 +5,7 @@ RSpec.describe NotesController, type: :controller do
   let(:note) { create :note, user: user }
   let(:note2) { create :note, user: user }
   let(:valid_attributes) {{city: "Berlin", note: "Goood"}}
-  let(:invalid_attributes) {{city: '', note: ''}}
+  let(:invalid_attributes) {{city: 'x', note: 'x'}}
 
   before(:each) do
     sign_in user
