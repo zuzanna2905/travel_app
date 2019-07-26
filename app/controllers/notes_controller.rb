@@ -49,9 +49,11 @@ class NotesController < ApplicationController
     end
 
     def weather(city)
-      weather = HTTP.get("http://api.openweathermap.org/data/2.5/weather?q=#{city}&APPID=#{ENV['APPID']}&units=metric").body
-      if JSON.parse(weather)['cod'] != '404'
-        return JSON.parse(weather)['main']['temp_min']
+      if city.nil?
+        weather = HTTP.get("http://api.openweathermap.org/data/2.5/weather?q=#{city}&APPID=#{ENV['APPID']}&units=metric").body
+        if JSON.parse(weather)['cod'] != '404'
+          return JSON.parse(weather)['main']['temp_min']
+        end
       end
       'no data'
     end
