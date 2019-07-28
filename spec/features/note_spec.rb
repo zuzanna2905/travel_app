@@ -16,6 +16,7 @@ RSpec.feature "Notes", type: :feature do
 
   it 'show index notes page ' do
     expect(page).to have_content 'Add new note'
+    expect(page).to have_content 'All notes'
     expect(page).to have_content(user.notes.last.city)
   end
 
@@ -42,6 +43,6 @@ RSpec.feature "Notes", type: :feature do
 
   it 'show note' do
     click_on 'Show'
-    expect(page).not_to have_content 'Add new note'
+    expect(page).not_to have_content 'All notes'
   end
 end

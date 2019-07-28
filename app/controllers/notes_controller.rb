@@ -15,7 +15,7 @@ class NotesController < ApplicationController
 
   def create
     @note = current_user.notes.build(note_params)
-    @note.weather = weather(note_params[:city])
+    @note.weather = Note.weather(note_params[:city])
     if @note.save
       redirect_to @note
     else
@@ -48,13 +48,4 @@ class NotesController < ApplicationController
       @note = Note.find(params[:id])
     end
 
-    def weather(city)
-      if !city.nil?
-        weather = HTTP.get("http://api.openweathermap.org/data/2.5/weather?q=#{city}&APPID=#{ENV['APPID']}&units=metric").body
-        if JSON.parse(weather)['cod'] != '404'
-          return JSON.parse(weather)['main']['temp_min']
-        end
-      end
-      'no data'
-    end
 end
